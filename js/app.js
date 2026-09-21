@@ -1,35 +1,52 @@
 /**
- * Racine Clicks - Registration Application Orchestrator
+ * Racine Clicks - Registration Application Orchestrator (Index Page)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Elements
+  // Form Elements
   const form = document.getElementById('registration-form');
   const submitBtn = document.getElementById('submit-btn');
   const btnText = document.getElementById('btn-text');
   const btnSpinner = document.getElementById('btn-spinner');
-  
-  // Views
-  const formContainer = document.getElementById('form-container');
-  const successView = document.getElementById('success-view');
   const errorBanner = document.getElementById('error-banner');
   const errorMessage = document.getElementById('error-message');
   const errorDismissBtn = document.getElementById('error-dismiss-btn');
-  
-  // Success receipt fields
-  const receiptName = document.getElementById('receipt-name');
-  const receiptMobile = document.getElementById('receipt-mobile');
-  const receiptWorkshop = document.getElementById('receipt-workshop');
-  const receiptAmount = document.getElementById('receipt-amount');
-  const receiptPaymentId = document.getElementById('receipt-payment-id');
-  const receiptRegId = document.getElementById('receipt-reg-id');
-  const receiptDate = document.getElementById('receipt-date');
-  const whatsappJoinBtn = document.getElementById('whatsapp-join-btn');
-  const registerAnotherBtn = document.getElementById('register-another-btn');
-  const printReceiptBtn = document.getElementById('print-receipt-btn');
 
-  // WhatsApp group link configuration
-  const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/invite/RacineClicksWorkshop';
+  // Google Sheets Web App Endpoint (Paste your Google Apps Script Web App URL here)
+  const GOOGLE_SHEET_WEBAPP_URL = ''; // e.g. https://script.google.com/macros/s/AKfycbx.../exec
+
+  /**
+   * Save registration details to Google Sheet via Google Apps Script
+   */
+  async function saveToGoogleSheet(payload) {
+    if (!GOOGLE_SHEET_WEBAPP_URL) {
+      console.log('Google Sheets URL not configured yet. Payload:', payload);
+      return;
+    }
+
+    try {
+      await fetch(GOOGLE_SHEET_WEBAPP_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Avoid CORS restrictions from Google Apps Script
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+      console.log('Successfully posted registration data to Google Sheets.');
+    } catch (sheetErr) {
+      console.error('Could not save to Google Sheet:', sheetErr);
+    }
+  }
+
+  /**
+   * Generate a readable registration ID: RC-WAW-XXXXX
+   */
+  function generateRegistrationId() {
+    const timestamp = Date.now().toString().slice(-4);
+    const random = Math.floor(1000 + Math.random() * 9000);
+    return `RC-WAW-${timestamp}${random}`;
+  }
 
   // Radio button card styling handling
   const radioCards = document.querySelectorAll('.radio-card');
@@ -144,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isLoading) {
       submitBtn.disabled = true;
       btnSpinner.classList.remove('hidden');
-      btnText.textContent = 'CONNECTING GATEWAY...';
+      btnText.textContent = 'PROCEEDING TO PAYMENT...';
     } else {
       submitBtn.disabled = false;
       btnSpinner.classList.add('hidden');
@@ -159,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Handle Form Submission
+  // Handle Form Submission -> Redirect to payment.html
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     errorBanner.classList.add('hidden');
@@ -190,65 +207,40 @@ document.addEventListener('DOMContentLoaded', () => {
     setLoading(true);
 
     try {
-      // Call payment integration
-      const paymentResult = await window.PaymentGateway.processPayment(formData);
+      const regId = generateRegistrationId();
+      const registrationRecord = {
+        timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+        registrationId: regId,
+        fullName: formData.fullName,
+        mobileNumber: window.Validation.cleanIndianMobile(formData.mobileNumber),
+        email: formData.email,
+        cityLocation: formData.location,
+        studioName: formData.studioName || 'N/A',
+        photographyExp: formData.photographyExp,
+        role: formData.role,
+        photoshopExp: formData.photoshopExp,
+        designAlbums: formData.designAlbums,
+        referralSource: formData.referralSource,
+        amountPaid: '₹249',
+        status: 'PENDING_PAYMENT'
+      };
 
-      if (paymentResult && paymentResult.status === 'SUCCESS') {
-        // Populate receipt
-        receiptName.textContent = formData.fullName;
-        receiptMobile.textContent = window.Validation.cleanIndianMobile(formData.mobileNumber);
-        receiptWorkshop.textContent = 'Wedding Album Workshop';
-        receiptAmount.textContent = '₹' + paymentResult.amount;
-        receiptPaymentId.textContent = paymentResult.paymentId;
-        receiptRegId.textContent = paymentResult.registrationId;
-        
-        if (receiptDate) {
-          const formattedDate = new Date().toLocaleDateString('en-IN', {
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-          });
-          receiptDate.textContent = formattedDate;
-        }
+      // Store in sessionStorage for payment.html
+      sessionStorage.setItem('racine_registration', JSON.stringify(registrationRecord));
 
-        // Setup WhatsApp join button
-        if (whatsappJoinBtn) {
-          whatsappJoinBtn.href = WHATSAPP_GROUP_URL;
-        }
+      // Record to Google Sheet in background (if configured)
+      saveToGoogleSheet(registrationRecord);
 
-        // Transition views
-        formContainer.classList.add('hidden');
-        successView.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+      // Brief delay for smooth UX then redirect to payment.html
+      setTimeout(() => {
+        window.location.href = 'payment.html';
+      }, 350);
+
     } catch (err) {
-      console.error('Payment failure:', err);
-      // Show error banner at top of form
-      errorMessage.textContent = err.message || 'Payment could not be completed. Please try again.';
+      console.error('Registration processing error:', err);
+      errorMessage.textContent = 'An unexpected error occurred. Please try again.';
       errorBanner.classList.remove('hidden');
-      errorBanner.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } finally {
       setLoading(false);
     }
   });
-
-  // Register another participant button
-  if (registerAnotherBtn) {
-    registerAnotherBtn.addEventListener('click', () => {
-      form.reset();
-      updateRadioStyles();
-      successView.classList.add('hidden');
-      formContainer.classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // Print / Save Receipt
-  if (printReceiptBtn) {
-    printReceiptBtn.addEventListener('click', () => {
-      window.print();
-    });
-  }
 });
