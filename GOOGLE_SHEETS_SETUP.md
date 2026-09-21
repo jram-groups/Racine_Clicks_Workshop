@@ -8,26 +8,27 @@ This guide explains how to store form submissions from your live Vercel website 
 
 1. Go to [Google Sheets](https://sheets.new) and create a new spreadsheet.
 2. Name the sheet: **Racine Clicks Workshop Registrations**.
-3. In **Row 1**, set up the following column headers (one per column from A to P):
+3. In **Row 1**, set up your column headers in the exact order of the registration form:
 
-| Column | Header Name |
-| :--- | :--- |
-| **A** | Timestamp |
-| **B** | Registration ID |
-| **C** | Payment ID |
-| **D** | UPI Ref / UTR |
-| **E** | Full Name |
-| **F** | WhatsApp Number |
-| **G** | Email |
-| **H** | City / Location |
-| **I** | Photo Studio Name |
-| **J** | Photography Experience |
-| **K** | Role |
-| **L** | Photoshop Experience |
-| **M** | Design Albums |
-| **N** | Referral Source |
-| **O** | Amount Paid |
-| **P** | Status |
+| Column | Header Name | Matches Field |
+| :--- | :--- | :--- |
+| **A** | Full Name | 01. Full Name |
+| **B** | WhatsApp Number | 02. WhatsApp Number |
+| **C** | Email Address | 03. Email Address |
+| **D** | City / Location | 04. Location / City |
+| **E** | Photo Studio Name | 05. Photo Studio Name |
+| **F** | Photography Experience | 06. Photography Experience |
+| **G** | Role | 07. Role |
+| **H** | Photoshop Experience | 08. Photoshop Experience |
+| **I** | Design Albums | 09. Do you design albums? |
+| **J** | Referral Source | 10. Where did you find us? |
+| **K** | UPI Ref / UTR | Payment UTR Reference |
+| **L** | Amount Paid | ₹249 |
+| **M** | Payment Status | PAID / PENDING |
+| **N** | Registration ID | e.g. RC-WAW-XXXX |
+| **O** | Timestamp | Date & Time Submitted |
+
+> 💡 **Smart Script**: The script below **automatically detects your column headers** in Row 1. Even if your columns are in a different order or you rearrange them, the data will always land under the correct matching header!
 
 ---
 
@@ -35,16 +36,28 @@ This guide explains how to store form submissions from your live Vercel website 
 
 1. In the Google Sheet menu bar, click **Extensions** > **Apps Script**.
 2. Delete whatever code is inside `Code.gs`.
-3. Paste the following script:
+3. Paste the following smart script:
 
 ```javascript
-// Handles GET requests (for testing in browser)
+// Handles GET requests (checks status & returns current sheet headers)
 function doGet(e) {
+  try {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss ? (ss.getActiveSheet() || ss.getSheets()[0]) : null;
+    if (sheet) {
+      var lastCol = sheet.getLastColumn() || 1;
+      var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "active",
+        headers: headers
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+  } catch (err) {}
   return ContentService.createTextOutput("✅ Racine Clicks Registration Webhook is active and running!")
     .setMimeType(ContentService.MimeType.TEXT);
 }
 
-// Handles POST requests from the registration form & payment confirmation
+// Handles POST requests - Smart Column Mapping based on Row 1 Headers
 function doPost(e) {
   try {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -65,25 +78,75 @@ function doPost(e) {
       data = e.parameter;
     }
 
-    // Append a new row with the registration details
-    sheet.appendRow([
-      data.timestamp || new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
-      data.registrationId || '',
-      data.paymentId || '',
-      "'" + (data.upiUtr || 'Paid via UPI QR'),
-      data.fullName || '',
-      "'" + (data.mobileNumber || ''), // Prefix with quote to preserve leading zero
-      data.email || '',
-      data.cityLocation || '',
-      data.studioName || '',
-      data.photographyExp || '',
-      data.role || '',
-      data.photoshopExp || '',
-      data.designAlbums || '',
-      data.referralSource || '',
-      data.amountPaid || '₹249',
-      data.status || 'PENDING_PAYMENT'
-    ]);
+    // Read headers from Row 1
+    var lastCol = sheet.getLastColumn();
+    if (lastCol < 1) lastCol = 1;
+    var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+
+    // Dynamically map each column by its header name
+    var row = [];
+    for (var i = 0; i < headers.length; i++) {
+      var h = (headers[i] || '').toString().toLowerCase().trim();
+
+      if (h.indexOf('name') !== -1 && h.indexOf('studio') === -1) {
+        row.push(data.fullName || '');
+      } else if (h.indexOf('mobile') !== -1 || h.indexOf('phone') !== -1 || h.indexOf('whatsapp') !== -1) {
+        row.push("'" + (data.mobileNumber || ''));
+      } else if (h.indexOf('email') !== -1) {
+        row.push(data.email || '');
+      } else if (h.indexOf('city') !== -1 || h.indexOf('location') !== -1) {
+        row.push(data.cityLocation || '');
+      } else if (h.indexOf('studio') !== -1) {
+        row.push(data.studioName || 'N/A');
+      } else if (h.indexOf('photo') !== -1 && (h.indexOf('exp') !== -1 || h.indexOf('graphy') !== -1) && h.indexOf('shop') === -1) {
+        row.push(data.photographyExp || '');
+      } else if (h.indexOf('role') !== -1 || h.indexOf('profession') !== -1) {
+        row.push(data.role || '');
+      } else if (h.indexOf('photoshop') !== -1) {
+        row.push(data.photoshopExp || '');
+      } else if (h.indexOf('album') !== -1) {
+        row.push(data.designAlbums || '');
+      } else if (h.indexOf('referral') !== -1 || h.indexOf('source') !== -1 || h.indexOf('find') !== -1) {
+        row.push(data.referralSource || '');
+      } else if (h.indexOf('utr') !== -1 || h.indexOf('upi') !== -1 || h.indexOf('ref') !== -1) {
+        row.push("'" + (data.upiUtr || 'Paid via UPI QR'));
+      } else if (h.indexOf('reg') !== -1) {
+        row.push(data.registrationId || '');
+      } else if (h.indexOf('amount') !== -1 || h.indexOf('fee') !== -1 || h.indexOf('price') !== -1) {
+        row.push(data.amountPaid || '₹249');
+      } else if (h.indexOf('status') !== -1) {
+        row.push(data.status || 'PENDING_PAYMENT');
+      } else if (h.indexOf('time') !== -1 || h.indexOf('date') !== -1) {
+        row.push(data.timestamp || new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }));
+      } else if (h.indexOf('payment') !== -1) {
+        row.push(data.paymentId || '');
+      } else {
+        row.push('');
+      }
+    }
+
+    // Default fallback row if headers row was empty
+    if (row.length === 0 || row.every(function(val) { return val === ''; })) {
+      row = [
+        data.fullName || '',
+        "'" + (data.mobileNumber || ''),
+        data.email || '',
+        data.cityLocation || '',
+        data.studioName || '',
+        data.photographyExp || '',
+        data.role || '',
+        data.photoshopExp || '',
+        data.designAlbums || '',
+        data.referralSource || '',
+        "'" + (data.upiUtr || 'Paid via UPI QR'),
+        data.amountPaid || '₹249',
+        data.status || 'PENDING_PAYMENT',
+        data.registrationId || '',
+        data.timestamp || new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
+      ];
+    }
+
+    sheet.appendRow(row);
 
     return ContentService.createTextOutput(JSON.stringify({ result: 'success' }))
       .setMimeType(ContentService.MimeType.JSON);
