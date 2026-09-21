@@ -286,7 +286,7 @@
       const receiptUtr = document.getElementById('receipt-utr');
 
       // Google Sheets Web App Endpoint
-      const GOOGLE_SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzsfIroXEuBy0A7benH9EBwO-mZ51P9LLX6zgMk3LEMN3QeVk5qkn6bcAPM8PCCvdi0Hw/exec'; // Paste your Google Apps Script URL here
+      const GOOGLE_SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyhByyWvPWlfReCANLnjGZ5gnjjngJPo_1DdP32PsJ7QP_hTydXIcY8mVYjIYEx2U_1gA/exec'; // Paste your Google Apps Script URL here
 
       // Retrieve registration info from sessionStorage
       let registration = null;
@@ -352,8 +352,9 @@
             await fetch(GOOGLE_SHEET_WEBAPP_URL, {
               method: 'POST',
               mode: 'no-cors',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(registration)
+              headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+              body: JSON.stringify(registration),
+              keepalive: true
             });
           } catch (err) {
             console.error('Error logging to Google Sheet:', err);

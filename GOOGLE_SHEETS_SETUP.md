@@ -47,12 +47,27 @@ function doGet(e) {
 // Handles POST requests from the registration form & payment confirmation
 function doPost(e) {
   try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var data = JSON.parse(e.postData.contents);
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss ? (ss.getActiveSheet() || ss.getSheets()[0]) : null;
+    if (!sheet) {
+      return ContentService.createTextOutput(JSON.stringify({ result: 'error', error: 'Spreadsheet not found' }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    var data = {};
+    if (e && e.postData && e.postData.contents) {
+      try {
+        data = JSON.parse(e.postData.contents);
+      } catch (err) {
+        data = e.parameter || {};
+      }
+    } else if (e && e.parameter) {
+      data = e.parameter;
+    }
 
     // Append a new row with the registration details
     sheet.appendRow([
-      data.timestamp || new Date(),
+      data.timestamp || new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
       data.registrationId || '',
       data.paymentId || '',
       "'" + (data.upiUtr || 'Paid via UPI QR'),
@@ -67,7 +82,7 @@ function doPost(e) {
       data.designAlbums || '',
       data.referralSource || '',
       data.amountPaid || '₹249',
-      data.status || 'SUCCESS'
+      data.status || 'PENDING_PAYMENT'
     ]);
 
     return ContentService.createTextOutput(JSON.stringify({ result: 'success' }))

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const errorDismissBtn = document.getElementById('error-dismiss-btn');
 
   // Google Sheets Web App Endpoint (Paste your Google Apps Script Web App URL here)
-  const GOOGLE_SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzsfIroXEuBy0A7benH9EBwO-mZ51P9LLX6zgMk3LEMN3QeVk5qkn6bcAPM8PCCvdi0Hw/exec'; // e.g. https://script.google.com/macros/s/AKfycbx.../exec
+  const GOOGLE_SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyhByyWvPWlfReCANLnjGZ5gnjjngJPo_1DdP32PsJ7QP_hTydXIcY8mVYjIYEx2U_1gA/exec'; // e.g. https://script.google.com/macros/s/AKfycbx.../exec
 
   /**
    * Save registration details to Google Sheet via Google Apps Script
@@ -29,11 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
         method: 'POST',
         mode: 'no-cors', // Avoid CORS restrictions from Google Apps Script
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'text/plain;charset=utf-8'
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        keepalive: true
       });
-      console.log('Successfully posted registration data to Google Sheets.');
+      console.log('Successfully dispatched registration data to Google Sheets.');
     } catch (sheetErr) {
       console.error('Could not save to Google Sheet:', sheetErr);
     }
@@ -228,13 +229,14 @@ document.addEventListener('DOMContentLoaded', () => {
       // Store in sessionStorage for payment.html
       sessionStorage.setItem('racine_registration', JSON.stringify(registrationRecord));
 
-      // Record to Google Sheet in background (if configured)
-      saveToGoogleSheet(registrationRecord);
+      // Record to Google Sheet (awaits dispatch with 1.2s maximum delay so UX remains snappy)
+      await Promise.race([
+        saveToGoogleSheet(registrationRecord),
+        new Promise(resolve => setTimeout(resolve, 1200))
+      ]);
 
-      // Brief delay for smooth UX then redirect to payment.html
-      setTimeout(() => {
-        window.location.href = 'payment.html';
-      }, 350);
+      // Redirect to payment.html
+      window.location.href = 'payment.html';
 
     } catch (err) {
       console.error('Registration processing error:', err);
