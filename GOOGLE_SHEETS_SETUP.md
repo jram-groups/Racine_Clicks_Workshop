@@ -38,6 +38,13 @@ This guide explains how to store form submissions from your live Vercel website 
 3. Paste the following script:
 
 ```javascript
+// Handles GET requests (for testing in browser)
+function doGet(e) {
+  return ContentService.createTextOutput("✅ Racine Clicks Registration Webhook is active and running!")
+    .setMimeType(ContentService.MimeType.TEXT);
+}
+
+// Handles POST requests from the registration form & payment confirmation
 function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -108,3 +115,29 @@ function doPost(e) {
 4. Commit and push to Git (or redeploy to Vercel).
 
 Now, whenever a participant completes their registration on your live site, all their information will automatically appear as a new row in your Google Sheet!
+
+---
+
+## ⚠️ Troubleshooting: "Sorry, unable to open the file at present"
+
+If Google Drive or Apps Script displays:
+> **"Sorry, unable to open the file at present. Please check the address and try again."**
+
+This is a well-known Google Drive multi-account session conflict. Here is how to fix it immediately:
+
+1. **Option A (Fastest Fix — Incognito Window)**:
+   - Open an **Incognito / Private Window** in your browser (`Ctrl + Shift + N` on Windows/Chrome).
+   - Log into **only one Google account** (the account you want to use for the workshop sheet).
+   - Open [sheets.new](https://sheets.new) or open your spreadsheet.
+   - Go to **Extensions > Apps Script** and deploy. It will work smoothly without any session conflicts.
+
+2. **Option B (Multi-Account Switch)**:
+   - In your browser, click your Google profile photo in the top right.
+   - Make sure you are switched to the primary account that owns the spreadsheet.
+   - If you have multiple Google accounts logged in, Google tries to load the file using your default `/u/0/` account instead of the account that created the sheet.
+
+3. **Option C (Deployment Access)**:
+   - When deploying the Apps Script Web App, ensure:
+     - **Execute as**: `Me`
+     - **Who has access**: `Anyone` (NOT "Only myself").
+

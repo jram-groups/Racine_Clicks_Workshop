@@ -55,7 +55,7 @@ body {
   border: 1px solid rgba(17, 17, 17, 0.12);
   box-shadow: 
     0 1px 3px rgba(0, 0, 0, 0.04),
-    0 20px 40px -15px rgba(0, 0, 0, 0.06);
+    0 12px 32px -8px rgba(0, 0, 0, 0.05);
   border-radius: 0.75rem;
   max-width: 100%;
 }

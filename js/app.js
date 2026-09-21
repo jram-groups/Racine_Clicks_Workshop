@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const errorDismissBtn = document.getElementById('error-dismiss-btn');
 
   // Google Sheets Web App Endpoint (Paste your Google Apps Script Web App URL here)
-  const GOOGLE_SHEET_WEBAPP_URL = ''; // e.g. https://script.google.com/macros/s/AKfycbx.../exec
+  const GOOGLE_SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzsfIroXEuBy0A7benH9EBwO-mZ51P9LLX6zgMk3LEMN3QeVk5qkn6bcAPM8PCCvdi0Hw/exec'; // e.g. https://script.google.com/macros/s/AKfycbx.../exec
 
   /**
    * Save registration details to Google Sheet via Google Apps Script

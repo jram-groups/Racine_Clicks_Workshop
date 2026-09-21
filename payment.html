@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Complete Payment | Racine Clicks Workshop</title>
   <meta name="description" content="Complete your UPI payment for the Racine Clicks Online Album Design Workshop.">
-  
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -34,37 +35,31 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="studio-bg text-[#111111] antialiased min-h-screen selection:bg-[#E04E15] selection:text-white flex flex-col justify-between overflow-x-hidden w-full">
+
+<body
+  class="studio-bg text-[#111111] antialiased min-h-screen selection:bg-[#E04E15] selection:text-white flex flex-col justify-between overflow-x-hidden w-full">
 
   <!-- ================= NAVBAR ================= -->
   <header class="sticky top-0 z-40 w-full bg-[#F8F7F4]/95 backdrop-blur-md border-b border-[#111111]/10">
-    <div class="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-18 flex items-center justify-between gap-2">
-      
-      <!-- Brand -->
-      <a href="index.html" class="flex items-center space-x-2.5 sm:space-x-3 group min-w-0">
-        <div class="w-8 h-8 sm:w-9 sm:h-9 border border-[#111111] rounded-md flex items-center justify-center bg-white shadow-xs group-hover:border-[#E04E15] transition-colors flex-shrink-0">
-          <svg class="w-4 h-4 text-[#111111] group-hover:text-[#E04E15] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
-            <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
-            <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
-            <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
-            <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
-            <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
-          </svg>
-        </div>
-        <div class="flex flex-col min-w-0">
-          <span class="text-sm sm:text-base font-black tracking-widest uppercase text-[#111111] leading-none truncate">
-            RACINE CLICKS
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-18 flex items-center justify-between gap-2">
+
+      <!-- Official Racine Clicks Brand Logo -->
+      <a href="index.html" class="flex items-center space-x-3 group min-w-0 py-1">
+        <img src="assets/images/racine-logo.png" alt="Racine Clicks Logo"
+          class="h-9 sm:h-10 w-auto rounded-md object-contain shadow-xs transition-transform group-hover:scale-[1.02]">
+        <div class="hidden sm:flex flex-col min-w-0 border-l-2 border-neutral-300 pl-3">
+          <span class="text-xs sm:text-sm font-extrabold tracking-wider uppercase text-[#111111] leading-tight">
+            Online Album Design Workshop
           </span>
-          <span class="text-[9px] sm:text-[10px] font-semibold tracking-wider uppercase text-[#666666] mt-0.5 truncate">
-            Step 2: Payment
+          <span class="text-[11px] sm:text-xs text-[#E04E15] font-bold tracking-wide mt-0.5">
+            Step 2: Complete Payment
           </span>
         </div>
       </a>
 
       <!-- Step Indicator -->
-      <div class="flex items-center space-x-1.5 sm:space-x-2 text-[11px] sm:text-xs font-bold text-[#E04E15] bg-[#FFF3EE] px-2.5 sm:px-3 py-1 rounded-full border border-[#E04E15]/30 flex-shrink-0">
+      <div
+        class="flex items-center space-x-1.5 sm:space-x-2 text-[11px] sm:text-xs font-bold text-[#E04E15] bg-[#FFF3EE] px-2.5 sm:px-3 py-1 rounded-full border border-[#E04E15]/30 flex-shrink-0">
         <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#E04E15] animate-pulse flex-shrink-0"></span>
         <span class="hidden sm:inline">Seat Reserved • Complete Payment</span>
         <span class="inline sm:hidden">Pay ₹249</span>
@@ -74,10 +69,10 @@
   </header>
 
   <!-- ================= PAYMENT MAIN CONTAINER ================= -->
-  <main class="max-w-xl mx-auto px-3.5 sm:px-6 py-6 sm:py-10 w-full flex-1 min-w-0">
+  <main class="max-w-xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full flex-1 min-w-0">
 
     <!-- PAYMENT CARD VIEW -->
-    <div id="payment-view" class="luxury-card p-4 sm:p-6 lg:p-8 bg-white space-y-5 sm:space-y-6 w-full">
+    <div id="payment-view" class="luxury-card p-5 sm:p-7 lg:p-8 bg-white space-y-5 sm:space-y-6 w-full">
 
       <!-- Header Title -->
       <div class="text-center pb-2 border-b border-neutral-100">
@@ -113,11 +108,8 @@
       <div class="text-center space-y-2.5 py-1">
         <div class="inline-block p-2.5 bg-white border border-neutral-200 rounded-xl shadow-xs max-w-full">
           <!-- Cropped QR code only -->
-          <img
-            src="assets/images/qr-code.png"
-            alt="Racine Clicks Workshop UPI QR Code"
-            class="w-48 h-48 sm:w-56 sm:h-56 mx-auto rounded-md object-contain max-w-full"
-          >
+          <img src="assets/images/qr-code.png" alt="Racine Clicks Workshop UPI QR Code"
+            class="w-48 h-48 sm:w-56 sm:h-56 mx-auto rounded-md object-contain max-w-full">
         </div>
         <p class="text-[11px] sm:text-xs text-[#666666] font-medium px-2">
           Scan with Google Pay, PhonePe, Paytm, or BHIM
@@ -125,29 +117,25 @@
       </div>
 
       <!-- UPI ID Display Box with Copy Button -->
-      <div class="p-2.5 sm:p-3 bg-[#FAF9F7] border border-neutral-200 rounded-lg flex items-center justify-between gap-2 min-w-0">
+      <div
+        class="p-2.5 sm:p-3 bg-[#FAF9F7] border border-neutral-200 rounded-lg flex items-center justify-between gap-2 min-w-0">
         <div class="min-w-0 flex-1">
           <span class="block text-[9px] sm:text-[10px] uppercase font-bold text-[#777777] tracking-wider">UPI ID</span>
           <span class="font-mono text-xs sm:text-sm font-bold text-[#111111] truncate block select-all">
             ukusha99521-2@oksbi
           </span>
         </div>
-        <button
-          type="button"
-          id="copy-upi-btn"
-          class="px-3 py-1.5 bg-white border border-neutral-300 hover:border-[#E04E15] hover:text-[#E04E15] text-xs font-bold rounded shadow-xs transition flex-shrink-0 active:scale-95"
-        >
+        <button type="button" id="copy-upi-btn"
+          class="px-3 py-1.5 bg-white border border-neutral-300 hover:border-[#E04E15] hover:text-[#E04E15] text-xs font-bold rounded shadow-xs transition flex-shrink-0 active:scale-95">
           Copy
         </button>
       </div>
 
       <!-- Direct UPI Payment CTA Button -->
       <div class="space-y-1.5">
-        <a
-          id="direct-upi-link"
+        <a id="direct-upi-link"
           href="upi://pay?pa=ukusha99521-2@oksbi&pn=usha%20usha&am=249&cu=INR&tn=Workshop%20Registration"
-          class="btn-cta w-full py-3.5 px-4 rounded-md flex items-center justify-center space-x-2 text-sm sm:text-base font-extrabold shadow-sm text-center"
-        >
+          class="btn-cta w-full py-3.5 px-4 rounded-md flex items-center justify-center space-x-2 text-sm sm:text-base font-extrabold shadow-sm text-center">
           <span>Pay ₹249 /-</span>
           <svg class="w-4 h-4 ml-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -162,25 +150,17 @@
       <div class="pt-4 border-t border-neutral-200 space-y-3">
         <div>
           <label for="payment-utr" class="block text-xs font-bold text-[#111111] mb-1">
-            UPI Reference / UTR Number <span class="text-neutral-400 font-normal">(Optional)</span>
+            UPI Reference / UTR Number <span class="text-neutral-400 font-normal">(12 digits is mandatory)</span>
           </label>
-          <input
-            type="text"
-            id="payment-utr"
-            placeholder="Enter 12-digit UTR from your payment app"
-            class="form-input text-xs py-2.5"
-            maxlength="24"
-          >
+          <input type="text" id="payment-utr" placeholder="Enter 12-digit UTR from your payment app"
+            class="form-input text-xs py-2.5" maxlength="12" required>
           <p class="text-[10px] sm:text-[11px] text-[#777777] mt-1">
             Helps us instantly confirm your seat registration.
           </p>
         </div>
 
-        <button
-          type="button"
-          id="confirm-paid-btn"
-          class="w-full py-3 px-4 sm:px-6 bg-[#111111] hover:bg-[#222222] text-white rounded-md text-xs sm:text-sm font-bold uppercase tracking-wider transition shadow-sm flex items-center justify-center space-x-2 active:scale-95"
-        >
+        <button type="button" id="confirm-paid-btn"
+          class="w-full py-3 px-4 sm:px-6 bg-[#111111] hover:bg-[#222222] text-white rounded-md text-xs sm:text-sm font-bold uppercase tracking-wider transition shadow-sm flex items-center justify-center space-x-2 active:scale-95">
           <span id="confirm-spinner" class="spinner hidden"></span>
           <span id="confirm-text">I HAVE COMPLETED PAYMENT</span>
         </button>
@@ -190,10 +170,11 @@
 
     <!-- SUCCESS STATE SCREEN (Hidden until payment confirmed) -->
     <div id="success-view" class="hidden luxury-card p-4 sm:p-6 lg:p-8 bg-white space-y-5 sm:space-y-6 w-full">
-      
+
       <!-- Success Badge -->
       <div class="text-center pb-5 border-b border-[#E5E5E5]">
-        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#FFF3EE] border border-[#E04E15] text-[#E04E15] rounded-full mx-auto flex items-center justify-center mb-3">
+        <div
+          class="w-12 h-12 sm:w-14 sm:h-14 bg-[#FFF3EE] border border-[#E04E15] text-[#E04E15] rounded-full mx-auto flex items-center justify-center mb-3">
           <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
           </svg>
@@ -226,7 +207,8 @@
         </div>
         <div class="flex justify-between items-center gap-2">
           <span class="text-[#777777] font-medium flex-shrink-0">Registration ID</span>
-          <span id="receipt-reg-id" class="text-[#111111] font-mono text-xs font-bold tracking-wide text-right truncate">—</span>
+          <span id="receipt-reg-id"
+            class="text-[#111111] font-mono text-xs font-bold tracking-wide text-right truncate">—</span>
         </div>
         <div id="receipt-utr-row" class="hidden flex justify-between items-center gap-2">
           <span class="text-[#777777] font-medium flex-shrink-0">UPI Ref / UTR</span>
@@ -240,31 +222,23 @@
 
       <!-- Actions: WhatsApp Group Join & Receipt -->
       <div class="space-y-3 pt-2 no-print">
-        <a
-          id="whatsapp-join-btn"
-          href="https://chat.whatsapp.com/invite/RacineClicksWorkshop"
-          target="_blank"
+        <a id="whatsapp-join-btn" href="https://chat.whatsapp.com/invite/RacineClicksWorkshop" target="_blank"
           rel="noopener noreferrer"
-          class="btn-cta w-full py-3.5 sm:py-4 px-4 sm:px-5 rounded-md flex items-center justify-center space-x-2 text-sm font-bold shadow-sm focus:outline-none"
-        >
+          class="btn-cta w-full py-3.5 sm:py-4 px-4 sm:px-5 rounded-md flex items-center justify-center space-x-2 text-sm font-bold shadow-sm focus:outline-none">
           <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            <path
+              d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
           </svg>
           <span>JOIN WHATSAPP GROUP</span>
         </a>
 
         <div class="flex items-center space-x-2 pt-1">
-          <button
-            type="button"
-            onclick="window.print()"
-            class="w-1/2 py-2.5 px-2.5 border border-[#111111]/20 text-[#111111] font-semibold text-xs rounded-md hover:bg-neutral-50 transition"
-          >
+          <button type="button" onclick="window.print()"
+            class="w-1/2 py-2.5 px-2.5 border border-[#111111]/20 text-[#111111] font-semibold text-xs rounded-md hover:bg-neutral-50 transition">
             Save Receipt
           </button>
-          <a
-            href="index.html"
-            class="w-1/2 text-center py-2.5 px-2.5 border border-[#111111]/20 text-[#111111] font-semibold text-xs rounded-md hover:bg-neutral-50 transition"
-          >
+          <a href="index.html"
+            class="w-1/2 text-center py-2.5 px-2.5 border border-[#111111]/20 text-[#111111] font-semibold text-xs rounded-md hover:bg-neutral-50 transition">
             Back to Home
           </a>
         </div>
@@ -283,7 +257,8 @@
         <span>Online Album Design Workshop</span>
       </div>
       <p class="text-xs text-[#777777]">
-        Helpline: <a href="tel:+918925773377" class="text-[#111111] hover:text-[#E04E15] font-semibold">+91 89257 73377</a>
+        Helpline: <a href="tel:+918925773377" class="text-[#111111] hover:text-[#E04E15] font-semibold">+91 89257
+          73377</a>
       </p>
     </div>
   </footer>
@@ -300,7 +275,7 @@
       const confirmSpinner = document.getElementById('confirm-spinner');
       const confirmText = document.getElementById('confirm-text');
       const utrInput = document.getElementById('payment-utr');
-      
+
       const paymentView = document.getElementById('payment-view');
       const successView = document.getElementById('success-view');
       const receiptName = document.getElementById('receipt-name');
@@ -311,7 +286,7 @@
       const receiptUtr = document.getElementById('receipt-utr');
 
       // Google Sheets Web App Endpoint
-      const GOOGLE_SHEET_WEBAPP_URL = ''; // Paste your Google Apps Script URL here
+      const GOOGLE_SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzsfIroXEuBy0A7benH9EBwO-mZ51P9LLX6zgMk3LEMN3QeVk5qkn6bcAPM8PCCvdi0Hw/exec'; // Paste your Google Apps Script URL here
 
       // Retrieve registration info from sessionStorage
       let registration = null;
@@ -408,4 +383,5 @@
     });
   </script>
 </body>
+
 </html>
