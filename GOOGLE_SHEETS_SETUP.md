@@ -146,9 +146,37 @@ function doPost(e) {
       ];
     }
 
+    // Check if Registration ID already exists to prevent duplicate entries
+    var regColIdx = -1;
+    var utrColIdx = -1;
+    var statusColIdx = -1;
+    for (var k = 0; k < headers.length; k++) {
+      var colName = (headers[k] || '').toString().toLowerCase();
+      if (colName.indexOf('reg') !== -1) regColIdx = k + 1;
+      if (colName.indexOf('utr') !== -1 || colName.indexOf('upi') !== -1 || colName.indexOf('ref') !== -1) utrColIdx = k + 1;
+      if (colName.indexOf('status') !== -1) statusColIdx = k + 1;
+    }
+
+    if (regColIdx !== -1 && data.registrationId && sheet.getLastRow() > 1) {
+      var existingRegIds = sheet.getRange(2, regColIdx, sheet.getLastRow() - 1, 1).getValues();
+      for (var r = 0; r < existingRegIds.length; r++) {
+        if (existingRegIds[r][0] == data.registrationId) {
+          var targetRow = r + 2;
+          if (utrColIdx !== -1 && data.upiUtr) {
+            sheet.getRange(targetRow, utrColIdx).setValue("'" + data.upiUtr);
+          }
+          if (statusColIdx !== -1 && data.status) {
+            sheet.getRange(targetRow, statusColIdx).setValue(data.status);
+          }
+          return ContentService.createTextOutput(JSON.stringify({ result: 'success', action: 'updated' }))
+            .setMimeType(ContentService.MimeType.JSON);
+        }
+      }
+    }
+
     sheet.appendRow(row);
 
-    return ContentService.createTextOutput(JSON.stringify({ result: 'success' }))
+    return ContentService.createTextOutput(JSON.stringify({ result: 'success', action: 'created' }))
       .setMimeType(ContentService.MimeType.JSON);
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({ result: 'error', error: error.toString() }))

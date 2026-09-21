@@ -226,16 +226,10 @@ document.addEventListener('DOMContentLoaded', () => {
         status: 'PENDING_PAYMENT'
       };
 
-      // Store in sessionStorage for payment.html
+      // Store in sessionStorage for payment.html (Single source of truth)
       sessionStorage.setItem('racine_registration', JSON.stringify(registrationRecord));
 
-      // Record to Google Sheet (awaits dispatch with 1.2s maximum delay so UX remains snappy)
-      await Promise.race([
-        saveToGoogleSheet(registrationRecord),
-        new Promise(resolve => setTimeout(resolve, 1200))
-      ]);
-
-      // Redirect to payment.html
+      // Redirect directly to payment.html where final verified submission with UTR happens
       window.location.href = 'payment.html';
 
     } catch (err) {
