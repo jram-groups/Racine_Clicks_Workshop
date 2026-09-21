@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Caveat:wght@600;700&display=swap');
+
+:root {
+  --color-deep-orange: #E04E15;
+  --color-deep-orange-hover: #C83E0B;
+  --color-deep-orange-light: #FFF2ED;
+  --color-deep-orange-glow: rgba(224, 78, 21, 0.28);
+  --color-black: #111111;
+  --color-charcoal: #1C1917;
+  --color-bg-studio: #F8F7F4; /* Luxurious studio alabaster */
+  --color-white: #FFFFFF;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-bg-studio);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Elegant Editorial Serif Typography */
+.font-editorial {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-script {
+  font-family: 'Caveat', cursive;
+}
+
+/* Studio Background Texture */
+.studio-bg {
+  background-color: #F8F7F4;
+  background-image: 
+    radial-gradient(at 15% 15%, rgba(224, 78, 21, 0.035) 0px, transparent 50%),
+    radial-gradient(at 85% 85%, rgba(17, 17, 17, 0.02) 0px, transparent 50%);
+}
+
+/* Card-Based Architecture with Floating Depth */
+.luxury-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 20px 40px -15px rgba(0, 0, 0, 0.06);
+  border-radius: 0.75rem;
+}
+
+/* Form Input & Select Styling */
+.form-input,
+.form-select {
+  width: 100%;
+  background-color: #FFFFFF;
+  color: #111111;
+  border: 1px solid rgba(17, 17, 17, 0.22);
+  border-radius: 0.375rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: #8E8E93;
+  font-weight: 400;
+}
+
+.form-input:hover,
+.form-select:hover {
+  border-color: rgba(17, 17, 17, 0.45);
+}
+
+/* Deep orange focus state */
+.form-input:focus,
+.form-select:focus {
+  background-color: #FFFFFF;
+  border-color: var(--color-deep-orange) !important;
+  box-shadow: 0 0 0 3px var(--color-deep-orange-glow);
+}
+
+/* Input Error State */
+.form-input.has-error,
+.form-select.has-error {
+  border-color: #DC2626 !important;
+  background-color: #FEF2F2;
+}
+
+/* Custom Select Dropdown Styling */
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem 1rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* Custom Radio Option Card */
+.radio-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(17, 17, 17, 0.2);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.radio-card:hover {
+  border-color: rgba(17, 17, 17, 0.5);
+  background-color: #FDFDFD;
+}
+
+.radio-card input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 1.5px solid #111111;
+  border-radius: 50%;
+  margin-right: 0.65rem;
+  outline: none;
+  display: grid;
+  place-content: center;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.radio-card input[type="radio"]::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.15s ease;
+  background-color: var(--color-deep-orange);
+}
+
+.radio-card input[type="radio"]:checked {
+  border-color: var(--color-deep-orange);
+}
+
+.radio-card input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+.radio-card.is-selected {
+  border-color: var(--color-deep-orange);
+  background-color: #FFF6F2;
+}
+
+/* Deep Orange Primary CTA Button */
+.btn-cta {
+  background-color: var(--color-deep-orange);
+  color: #FFFFFF;
+  border: 1px solid var(--color-deep-orange);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow: 0 10px 25px -4px rgba(224, 78, 21, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-cta:hover:not(:disabled) {
+  background-color: var(--color-deep-orange-hover);
+  border-color: var(--color-deep-orange-hover);
+  box-shadow: 0 14px 28px -4px rgba(224, 78, 21, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-cta:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px -3px rgba(224, 78, 21, 0.3);
+}
+
+.btn-cta:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top: 2.5px solid #FFFFFF;
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Print Ticket Styling */
+@media print {
+  body {
+    background-color: white !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
