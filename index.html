@@ -42,15 +42,15 @@
   class="studio-bg text-[#111111] antialiased min-h-screen selection:bg-[#E04E15] selection:text-white flex flex-col justify-between">
 
   <!-- ================= NAVBAR ================= -->
-  <header class="sticky top-0 z-40 w-full bg-[#F8F7F4]/90 backdrop-blur-md border-b border-[#111111]/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+  <header class="sticky top-0 z-40 w-full bg-[#F8F7F4]/95 backdrop-blur-md border-b border-[#111111]/10">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-15 sm:h-20 flex items-center justify-between gap-2">
 
       <!-- Brand & Subtitle -->
-      <a href="#" class="flex items-center space-x-3.5 group">
+      <a href="#" class="flex items-center space-x-2.5 sm:space-x-3.5 group min-w-0">
         <!-- Minimalist Camera Aperture Logo -->
         <div
-          class="w-10 h-10 border border-[#111111] rounded-md flex items-center justify-center bg-white shadow-xs group-hover:border-[#E04E15] transition-colors">
-          <svg class="w-5 h-5 text-[#111111] group-hover:text-[#E04E15] transition-colors" viewBox="0 0 24 24"
+          class="w-8 h-8 sm:w-10 sm:h-10 border border-[#111111] rounded-md flex items-center justify-center bg-white shadow-xs group-hover:border-[#E04E15] transition-colors flex-shrink-0">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 text-[#111111] group-hover:text-[#E04E15] transition-colors" viewBox="0 0 24 24"
             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
@@ -61,20 +61,18 @@
             <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
           </svg>
         </div>
-        <div class="flex flex-col">
-          <div class="flex items-center space-x-1">
-            <span class="text-base sm:text-lg font-black tracking-widest uppercase text-[#111111] leading-none">
-              RACINE CLICKS
-            </span>
-          </div>
-          <span class="text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase text-[#666666] mt-1">
+        <div class="flex flex-col min-w-0">
+          <span class="text-sm sm:text-lg font-black tracking-widest uppercase text-[#111111] leading-none truncate">
+            RACINE CLICKS
+          </span>
+          <span class="text-[9px] sm:text-[11px] font-semibold tracking-wider uppercase text-[#666666] mt-0.5 sm:mt-1 truncate">
             Online Album Design Workshop
           </span>
         </div>
       </a>
 
       <!-- Right Navbar Info & Quick Actions -->
-      <div class="flex items-center space-x-3 sm:space-x-5">
+      <div class="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
         <!-- Date & Time Pill -->
         <div
           class="hidden lg:flex items-center space-x-2 px-3.5 py-1.5 bg-white border border-[#111111]/15 rounded-full text-xs font-semibold text-[#333333] shadow-xs">
@@ -84,14 +82,14 @@
 
         <!-- Price Badge -->
         <div
-          class="hidden sm:flex items-baseline space-x-1.5 text-xs text-[#555555] font-semibold border-l border-[#111111]/15 pl-4">
+          class="hidden sm:flex items-baseline space-x-1.5 text-xs text-[#555555] font-semibold border-l border-[#111111]/15 pl-3 sm:pl-4">
           <span class="uppercase tracking-wider text-[10px]">Fee:</span>
-          <span class="text-[#E04E15] font-black text-base">Rs 249/-</span>
+          <span class="text-[#E04E15] font-black text-sm sm:text-base">Rs 249/-</span>
         </div>
 
         <!-- Jump to Form CTA -->
         <a href="#register-section"
-          class="btn-cta text-xs sm:text-sm py-2.5 px-4 sm:px-5 rounded-md font-bold uppercase tracking-wider transition-all">
+          class="btn-cta text-[11px] sm:text-sm py-2 sm:py-2.5 px-3 sm:px-5 rounded-md font-bold uppercase tracking-wider transition-all flex-shrink-0">
           REGISTER NOW
         </a>
       </div>
@@ -100,14 +98,14 @@
   </header>
 
   <!-- ================= HERO & SPLIT CARD SECTION ================= -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14 w-full">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+  <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-12 w-full overflow-hidden">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start w-full">
 
       <!-- ================= LEFT COLUMN: CARD-BASED WORKSHOP CONTENT ================= -->
-      <div class="lg:col-span-6 xl:col-span-7 space-y-7">
+      <div class="lg:col-span-6 xl:col-span-7 space-y-6 sm:space-y-7 min-w-0">
 
         <!-- Header Card: Headline & Script from Poster -->
-        <div class="luxury-card p-6 sm:p-8 space-y-4">
+        <div class="luxury-card p-4 sm:p-6 lg:p-8 space-y-3.5 sm:space-y-4">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <span
               class="inline-flex items-center space-x-1.5 px-3 py-1 bg-[#FFF3EE] border border-[#E04E15]/40 text-[#E04E15] rounded-full text-xs font-bold tracking-wider uppercase">
@@ -145,25 +143,25 @@
           </p>
 
           <!-- App Badges: Photoshop + Google Meet -->
-          <div class="flex items-center space-x-4 pt-2 border-t border-neutral-100">
-            <div class="flex items-center space-x-2.5">
+          <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-2 border-t border-neutral-100">
+            <div class="flex items-center space-x-2 sm:space-x-2.5">
               <!-- Photoshop Icon -->
               <div
-                class="w-10 h-10 bg-[#001E36] border border-[#00C8FF]/40 rounded-lg flex items-center justify-center shadow-xs">
-                <span class="text-[#31A8FF] font-black text-lg font-sans tracking-tighter">Ps</span>
+                class="w-9 h-9 sm:w-10 sm:h-10 bg-[#001E36] border border-[#00C8FF]/40 rounded-lg flex items-center justify-center shadow-xs flex-shrink-0">
+                <span class="text-[#31A8FF] font-black text-base sm:text-lg font-sans tracking-tighter">Ps</span>
               </div>
               <div class="text-xs">
                 <p class="font-bold text-[#111111]">Adobe Photoshop</p>
-                <p class="text-[#777777] text-[11px]">Workflow & Tools</p>
+                <p class="text-[#777777] text-[10px] sm:text-[11px]">Workflow & Tools</p>
               </div>
             </div>
 
-            <div class="w-px h-8 bg-neutral-200"></div>
+            <div class="hidden sm:block w-px h-8 bg-neutral-200"></div>
 
-            <div class="flex items-center space-x-2.5">
+            <div class="flex items-center space-x-2 sm:space-x-2.5">
               <!-- Google Meet Icon -->
               <div
-                class="w-10 h-10 bg-white border border-neutral-200 rounded-lg p-1.5 flex items-center justify-center shadow-xs">
+                class="w-9 h-9 sm:w-10 sm:h-10 bg-white border border-neutral-200 rounded-lg p-1.5 flex items-center justify-center shadow-xs flex-shrink-0">
                 <svg viewBox="0 0 48 48" class="w-full h-full">
                   <path fill="#00832d" d="m32 24l-8.5-7.5v15z" />
                   <path fill="#0066da" d="M11 9h16a4 4 0 0 1 4 4v22a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4V13a4 4 0 0 1 4-4z" />
@@ -175,7 +173,7 @@
               </div>
               <div class="text-xs">
                 <p class="font-bold text-[#111111]">Google Meet</p>
-                <p class="text-[#777777] text-[11px]">Live Stream Session</p>
+                <p class="text-[#777777] text-[10px] sm:text-[11px]">Live Stream Session</p>
               </div>
             </div>
           </div>
@@ -187,30 +185,30 @@
             <img src="assets/images/wedding-album-preview.jpg" alt="Racine Clicks Premium Wedding Album Design Specimen"
               class="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.02]" loading="eager">
             <div
-              class="absolute bottom-3 left-3 bg-[#111111]/90 text-white text-[11px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded backdrop-blur-sm">
+              class="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-auto bg-[#111111]/90 text-white text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase px-2 sm:px-2.5 py-1 rounded backdrop-blur-sm truncate">
               Racine Clicks Master Specimen • Sample Wedding Spreads
             </div>
           </div>
-          <div class="px-2 pt-3 pb-1 flex items-center justify-between text-xs text-[#555555]">
+          <div class="px-1.5 sm:px-2 pt-2.5 pb-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-[11px] sm:text-xs text-[#555555]">
             <span class="font-medium">100% Practical Demonstration on Real Wedding Photos</span>
             <span class="font-bold text-[#E04E15]">Live Q&A Included</span>
           </div>
         </div>
 
         <!-- "What You'll Learn" Card (Exact 6 Modules from Poster) -->
-        <div class="luxury-card p-6 sm:p-7 space-y-4">
+        <div class="luxury-card p-4 sm:p-6 lg:p-7 space-y-3.5 sm:space-y-4">
           <div class="flex items-center justify-between border-b border-[#111111]/10 pb-3">
-            <h2 class="text-base sm:text-lg font-black text-[#E04E15] uppercase tracking-wide">
+            <h2 class="text-sm sm:text-base lg:text-lg font-black text-[#E04E15] uppercase tracking-wide">
               What You'll Learn
             </h2>
             <span class="text-xs font-bold text-[#666666]">6 Core Topics</span>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
             <!-- Item 1 -->
-            <div class="p-3.5 bg-[#FAF9F7] border border-neutral-200 rounded-md flex items-start space-x-3">
+            <div class="p-3 sm:p-3.5 bg-[#FAF9F7] border border-neutral-200 rounded-md flex items-start space-x-2.5 sm:space-x-3 min-w-0">
               <span class="w-2 h-2 rounded-full bg-[#E04E15] mt-1.5 flex-shrink-0"></span>
-              <div>
+              <div class="min-w-0">
                 <h3 class="text-xs sm:text-sm font-bold text-[#111111]">Album Size & Layout Planning</h3>
                 <p class="text-[11px] text-[#666666] mt-0.5">Flushmount ratios, margin safety, and storytelling spread
                   pacing.</p>
@@ -218,9 +216,9 @@
             </div>
 
             <!-- Item 2 -->
-            <div class="p-3.5 bg-[#FAF9F7] border border-neutral-200 rounded-md flex items-start space-x-3">
+            <div class="p-3 sm:p-3.5 bg-[#FAF9F7] border border-neutral-200 rounded-md flex items-start space-x-2.5 sm:space-x-3 min-w-0">
               <span class="w-2 h-2 rounded-full bg-[#E04E15] mt-1.5 flex-shrink-0"></span>
-              <div>
+              <div class="min-w-0">
                 <h3 class="text-xs sm:text-sm font-bold text-[#111111]">Camera RAW Correction</h3>
                 <p class="text-[11px] text-[#666666] mt-0.5">Exposure recovery, white balance, and lens profile
                   adjustments.</p>
@@ -228,9 +226,9 @@
             </div>
 
             <!-- Item 3 -->
-            <div class="p-3.5 bg-[#FAF9F7] border border-neutral-200 rounded-md flex items-start space-x-3">
+            <div class="p-3 sm:p-3.5 bg-[#FAF9F7] border border-neutral-200 rounded-md flex items-start space-x-2.5 sm:space-x-3 min-w-0">
               <span class="w-2 h-2 rounded-full bg-[#E04E15] mt-1.5 flex-shrink-0"></span>
-              <div>
+              <div class="min-w-0">
                 <h3 class="text-xs sm:text-sm font-bold text-[#111111]">Color Grading</h3>
                 <p class="text-[11px] text-[#666666] mt-0.5">Tone curves, print-safe HSL palettes, and mood consistency.
                 </p>
@@ -238,9 +236,9 @@
             </div>
 
             <!-- Item 4 -->
-            <div class="p-3.5 bg-[#FAF9F7] border border-neutral-200 rounded-md flex items-start space-x-3">
+            <div class="p-3 sm:p-3.5 bg-[#FAF9F7] border border-neutral-200 rounded-md flex items-start space-x-2.5 sm:space-x-3 min-w-0">
               <span class="w-2 h-2 rounded-full bg-[#E04E15] mt-1.5 flex-shrink-0"></span>
-              <div>
+              <div class="min-w-0">
                 <h3 class="text-xs sm:text-sm font-bold text-[#111111]">Blending Options</h3>
                 <p class="text-[11px] text-[#666666] mt-0.5">Seamless composites, gradient masks, and overlay dynamics.
                 </p>
@@ -248,9 +246,9 @@
             </div>
 
             <!-- Item 5 -->
-            <div class="p-3.5 bg-[#FAF9F7] border border-neutral-200 rounded-md flex items-start space-x-3">
+            <div class="p-3 sm:p-3.5 bg-[#FAF9F7] border border-neutral-200 rounded-md flex items-start space-x-2.5 sm:space-x-3 min-w-0">
               <span class="w-2 h-2 rounded-full bg-[#E04E15] mt-1.5 flex-shrink-0"></span>
-              <div>
+              <div class="min-w-0">
                 <h3 class="text-xs sm:text-sm font-bold text-[#111111]">Skin Retouch</h3>
                 <p class="text-[11px] text-[#666666] mt-0.5">Natural texture preservation, frequency separation, and
                   cleanup.</p>
@@ -258,9 +256,9 @@
             </div>
 
             <!-- Item 6 -->
-            <div class="p-3.5 bg-[#FAF9F7] border border-neutral-200 rounded-md flex items-start space-x-3">
+            <div class="p-3 sm:p-3.5 bg-[#FAF9F7] border border-neutral-200 rounded-md flex items-start space-x-2.5 sm:space-x-3 min-w-0">
               <span class="w-2 h-2 rounded-full bg-[#E04E15] mt-1.5 flex-shrink-0"></span>
-              <div>
+              <div class="min-w-0">
                 <h3 class="text-xs sm:text-sm font-bold text-[#111111]">Album Design Workflow</h3>
                 <p class="text-[11px] text-[#666666] mt-0.5">High-speed batch actions and non-destructive smart grids.
                 </p>
@@ -270,30 +268,30 @@
         </div>
 
         <!-- Schedule & Google Meet Card -->
-        <div class="luxury-card p-5 sm:p-6 space-y-4">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="luxury-card p-4 sm:p-5 lg:p-6 space-y-3.5 sm:space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
             <div class="p-3 bg-[#F8F7F4] border border-neutral-200 rounded-md flex items-center space-x-3">
-              <span class="text-2xl">🗓️</span>
+              <span class="text-xl sm:text-2xl flex-shrink-0">🗓️</span>
               <div>
-                <span class="block text-[11px] font-bold text-[#777777] uppercase tracking-wider">Date</span>
-                <span class="block text-sm font-black text-[#111111]">27th September</span>
+                <span class="block text-[10px] sm:text-[11px] font-bold text-[#777777] uppercase tracking-wider">Date</span>
+                <span class="block text-xs sm:text-sm font-black text-[#111111]">27th September</span>
               </div>
             </div>
             <div class="p-3 bg-[#F8F7F4] border border-neutral-200 rounded-md flex items-center space-x-3">
-              <span class="text-2xl">🕒</span>
+              <span class="text-xl sm:text-2xl flex-shrink-0">🕒</span>
               <div>
-                <span class="block text-[11px] font-bold text-[#777777] uppercase tracking-wider">Time</span>
-                <span class="block text-sm font-black text-[#111111]">10:00 AM to 12:30 PM</span>
+                <span class="block text-[10px] sm:text-[11px] font-bold text-[#777777] uppercase tracking-wider">Time</span>
+                <span class="block text-xs sm:text-sm font-black text-[#111111]">10:00 AM to 12:30 PM</span>
               </div>
             </div>
           </div>
 
           <div
-            class="p-3.5 bg-[#FFF3EE] border border-[#E04E15]/30 rounded-md flex items-start space-x-2.5 text-xs text-[#111111]">
-            <span class="bg-[#E04E15] text-white px-2 py-0.5 rounded font-bold text-[11px] flex-shrink-0">
+            class="p-3 sm:p-3.5 bg-[#FFF3EE] border border-[#E04E15]/30 rounded-md flex items-start space-x-2.5 text-xs text-[#111111]">
+            <span class="bg-[#E04E15] text-white px-2 py-0.5 rounded font-bold text-[10px] sm:text-[11px] flex-shrink-0">
               Google Meet
             </span>
-            <p class="font-medium">
+            <p class="font-medium text-xs">
               Link will be shared before the workshop day through WhatsApp.
             </p>
           </div>
@@ -301,9 +299,9 @@
 
         <!-- FREE Templates Banner Card from Poster -->
         <div
-          class="luxury-card p-4 sm:p-5 flex flex-col sm:flex-row items-center sm:space-x-3 text-center sm:text-left border-l-4 border-l-[#E04E15]">
+          class="luxury-card p-3.5 sm:p-4 lg:p-5 flex flex-col sm:flex-row items-center sm:space-x-3 text-center sm:text-left border-l-4 border-l-[#E04E15]">
           <span
-            class="bg-[#E04E15] text-white font-black text-sm px-3.5 py-1.5 rounded-md tracking-wider uppercase mb-2 sm:mb-0 shadow-xs flex-shrink-0">
+            class="bg-[#E04E15] text-white font-black text-xs sm:text-sm px-3 sm:px-3.5 py-1.5 rounded-md tracking-wider uppercase mb-2 sm:mb-0 shadow-xs flex-shrink-0">
             FREE
           </span>
           <span class="text-xs sm:text-sm font-extrabold text-[#111111]">
@@ -312,9 +310,9 @@
         </div>
 
         <!-- Contact & Helpline Card from Poster -->
-        <div class="luxury-card p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div class="luxury-card p-3.5 sm:p-4 lg:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div class="flex items-center space-x-2.5">
-            <span class="text-xl">📞</span>
+            <span class="text-xl flex-shrink-0">📞</span>
             <div>
               <span class="text-xs text-[#777777] font-semibold">Contact & Helpline:</span>
               <a href="tel:+918925773377"
@@ -325,9 +323,9 @@
           </div>
           <a href="https://wa.me/918925773377?text=Hi%20Racine%20Clicks%2C%20I%20have%20a%20query%20regarding%20the%20Online%20Album%20Design%20Workshop"
             target="_blank" rel="noopener noreferrer"
-            class="px-4 py-2 border border-[#111111] hover:border-[#E04E15] hover:text-[#E04E15] rounded-md text-xs font-bold text-[#111111] transition flex items-center space-x-1.5">
+            class="w-full sm:w-auto justify-center px-4 py-2 border border-[#111111] hover:border-[#E04E15] hover:text-[#E04E15] rounded-md text-xs font-bold text-[#111111] transition flex items-center space-x-1.5">
             <span>Chat on WhatsApp</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
           </a>
@@ -336,21 +334,21 @@
       </div>
 
       <!-- ================= RIGHT COLUMN: REGISTRATION FORM CARD ================= -->
-      <div id="register-section" class="lg:col-span-6 xl:col-span-5 lg:sticky lg:top-24">
+      <div id="register-section" class="lg:col-span-6 xl:col-span-5 lg:sticky lg:top-24 min-w-0 w-full">
 
         <!-- Luxury Floating Registration Card -->
-        <div class="luxury-card p-6 sm:p-8">
+        <div class="luxury-card p-4 sm:p-6 lg:p-8 w-full">
 
           <!-- FORM HEADER -->
-          <div class="text-center mb-6">
-            <h2 class="text-xl sm:text-2xl font-black tracking-widest uppercase text-[#111111]">
+          <div class="text-center mb-5 sm:mb-6">
+            <h2 class="text-lg sm:text-2xl font-black tracking-widest uppercase text-[#111111]">
               RACINE CLICKS
             </h2>
-            <p class="text-xs font-semibold tracking-widest uppercase text-[#E04E15] mt-1">
+            <p class="text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-[#E04E15] mt-1">
               Online Album Design Workshop
             </p>
-            <div class="w-10 h-0.5 bg-[#111111] mx-auto my-3"></div>
-            <h3 class="text-lg sm:text-xl font-bold text-[#111111]">
+            <div class="w-10 h-0.5 bg-[#111111] mx-auto my-2.5 sm:my-3"></div>
+            <h3 class="text-base sm:text-xl font-bold text-[#111111]">
               Register Your Seat
             </h3>
             <p class="text-xs text-[#666666] mt-1">
@@ -401,13 +399,13 @@
                   <span class="font-mono text-xs text-[#777777] mr-1">02.</span>
                   Mobile / WhatsApp Number <span class="text-[#E04E15]">*</span>
                 </label>
-                <div class="relative flex">
+                <div class="relative flex min-w-0">
                   <span
-                    class="inline-flex items-center px-3.5 text-xs sm:text-sm font-semibold text-[#444444] bg-[#F5F5F3] border border-r-0 border-neutral-300 rounded-l-md select-none">
+                    class="inline-flex items-center px-3 sm:px-3.5 text-xs sm:text-sm font-semibold text-[#444444] bg-[#F5F5F3] border border-r-0 border-neutral-300 rounded-l-md select-none flex-shrink-0">
                     +91
                   </span>
                   <input type="tel" id="mobile-number" name="mobileNumber" placeholder="Enter your WhatsApp number"
-                    autocomplete="tel" maxlength="14" class="form-input rounded-l-none" required>
+                    autocomplete="tel" maxlength="14" class="form-input rounded-l-none flex-1 min-w-0" required>
                 </div>
                 <p id="error-mobileNumber" class="hidden text-xs text-red-600 font-medium mt-1"></p>
               </div>
@@ -502,18 +500,18 @@
                   <span class="font-mono text-xs text-[#777777] mr-1">09.</span>
                   Do you currently design wedding albums? <span class="text-[#E04E15]">*</span>
                 </label>
-                <div class="grid grid-cols-3 gap-2 sm:gap-3">
+                <div class="grid grid-cols-3 gap-1.5 sm:gap-3">
                   <label class="radio-card">
                     <input type="radio" name="designAlbums" value="Yes" required>
-                    <span class="text-xs sm:text-sm font-medium text-[#111111]">Yes</span>
+                    <span class="text-[11px] sm:text-sm font-medium text-[#111111]">Yes</span>
                   </label>
                   <label class="radio-card">
                     <input type="radio" name="designAlbums" value="No" required>
-                    <span class="text-xs sm:text-sm font-medium text-[#111111]">No</span>
+                    <span class="text-[11px] sm:text-sm font-medium text-[#111111]">No</span>
                   </label>
                   <label class="radio-card">
                     <input type="radio" name="designAlbums" value="Learning" required>
-                    <span class="text-xs sm:text-sm font-medium text-[#111111]">Learning</span>
+                    <span class="text-[11px] sm:text-sm font-medium text-[#111111]">Learning</span>
                   </label>
                 </div>
                 <p id="error-designAlbums" class="hidden text-xs text-red-600 font-medium mt-1"></p>
@@ -550,7 +548,7 @@
 
                 <!-- SUBMIT CTA BUTTON -->
                 <button type="submit" id="submit-btn"
-                  class="btn-cta w-full py-4 px-6 rounded-md flex items-center justify-center space-x-2 text-sm sm:text-base font-bold focus:outline-none focus:ring-2 focus:ring-[#E04E15] focus:ring-offset-2">
+                  class="btn-cta w-full py-3.5 sm:py-4 px-4 sm:px-6 rounded-md flex items-center justify-center space-x-2 text-sm sm:text-base font-bold focus:outline-none focus:ring-2 focus:ring-[#E04E15] focus:ring-offset-2">
                   <span id="btn-spinner" class="spinner hidden"></span>
                   <span id="btn-text">REGISTER & PAY ₹249</span>
                 </button>
@@ -567,7 +565,7 @@
           <!-- SUCCESS STATE SCREEN (Hidden until registration succeeds) -->
           <div id="success-view" class="hidden bg-white py-2 transition-all">
             <!-- Success Icon & Title -->
-            <div class="text-center pb-6 border-b border-[#E5E5E5]">
+            <div class="text-center pb-5 sm:pb-6 border-b border-[#E5E5E5]">
               <div
                 class="w-12 h-12 bg-[#FFF3EE] border border-[#E04E15] text-[#E04E15] rounded-full mx-auto flex items-center justify-center mb-3">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -583,40 +581,39 @@
             </div>
 
             <!-- Registration Details Ticket -->
-            <div class="py-5 space-y-3 border-b border-[#E5E5E5] text-xs sm:text-sm">
-              <div class="flex justify-between items-center">
-                <span class="text-[#777777] font-medium">Participant Name</span>
-                <span id="receipt-name" class="text-[#111111] font-bold text-right">—</span>
+            <div class="py-4 sm:py-5 space-y-2.5 sm:space-y-3 border-b border-[#E5E5E5] text-xs sm:text-sm">
+              <div class="flex justify-between items-center gap-2">
+                <span class="text-[#777777] font-medium flex-shrink-0">Participant</span>
+                <span id="receipt-name" class="text-[#111111] font-bold text-right truncate max-w-[65%]">—</span>
               </div>
-              <div class="flex justify-between items-center">
-                <span class="text-[#777777] font-medium">Mobile Number</span>
-                <span id="receipt-mobile" class="text-[#111111] font-bold font-mono text-right">—</span>
+              <div class="flex justify-between items-center gap-2">
+                <span class="text-[#777777] font-medium flex-shrink-0">WhatsApp Number</span>
+                <span id="receipt-mobile" class="text-[#111111] font-bold font-mono text-right truncate">—</span>
               </div>
-              <div class="flex justify-between items-center">
-                <span class="text-[#777777] font-medium">Workshop</span>
-                <span id="receipt-workshop" class="text-[#111111] font-semibold text-right">Online Album Design
-                  Workshop</span>
+              <div class="flex justify-between items-center gap-2">
+                <span class="text-[#777777] font-medium flex-shrink-0">Workshop</span>
+                <span id="receipt-workshop" class="text-[#111111] font-semibold text-right truncate">Online Album Design Workshop</span>
               </div>
-              <div class="flex justify-between items-center">
-                <span class="text-[#777777] font-medium">Amount Paid</span>
+              <div class="flex justify-between items-center gap-2">
+                <span class="text-[#777777] font-medium flex-shrink-0">Amount Paid</span>
                 <span id="receipt-amount" class="text-[#E04E15] font-black text-sm sm:text-base text-right">₹249</span>
               </div>
-              <div class="flex justify-between items-center">
-                <span class="text-[#777777] font-medium">Payment ID</span>
-                <span id="receipt-payment-id" class="text-[#111111] font-mono text-xs font-semibold text-right">—</span>
+              <div class="flex justify-between items-center gap-2">
+                <span class="text-[#777777] font-medium flex-shrink-0">Payment ID</span>
+                <span id="receipt-payment-id" class="text-[#111111] font-mono text-xs font-semibold text-right truncate">—</span>
               </div>
-              <div id="receipt-utr-row" class="hidden flex justify-between items-center">
-                <span class="text-[#777777] font-medium">UPI Ref / UTR</span>
-                <span id="receipt-utr" class="text-[#111111] font-mono text-xs font-bold text-right">—</span>
+              <div id="receipt-utr-row" class="hidden flex justify-between items-center gap-2">
+                <span class="text-[#777777] font-medium flex-shrink-0">UPI Ref / UTR</span>
+                <span id="receipt-utr" class="text-[#111111] font-mono text-xs font-bold text-right truncate">—</span>
               </div>
-              <div class="flex justify-between items-center">
-                <span class="text-[#777777] font-medium">Registration ID</span>
+              <div class="flex justify-between items-center gap-2">
+                <span class="text-[#777777] font-medium flex-shrink-0">Registration ID</span>
                 <span id="receipt-reg-id"
-                  class="text-[#111111] font-mono text-xs font-bold tracking-wide text-right">—</span>
+                  class="text-[#111111] font-mono text-xs font-bold tracking-wide text-right truncate">—</span>
               </div>
-              <div class="flex justify-between items-center">
-                <span class="text-[#777777] font-medium">Registered On</span>
-                <span id="receipt-date" class="text-[#555555] text-xs text-right">—</span>
+              <div class="flex justify-between items-center gap-2">
+                <span class="text-[#777777] font-medium flex-shrink-0">Registered On</span>
+                <span id="receipt-date" class="text-[#555555] text-xs text-right truncate">—</span>
               </div>
             </div>
 
