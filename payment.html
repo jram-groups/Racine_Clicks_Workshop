@@ -150,12 +150,19 @@
       <div class="pt-4 border-t border-neutral-200 space-y-3">
         <div>
           <label for="payment-utr" class="block text-xs font-bold text-[#111111] mb-1">
-            UPI Reference / UTR Number <span class="text-neutral-400 font-normal">(12 digits is mandatory)</span>
+            UPI Reference / UTR Number <span class="text-red-600 font-bold">* (12 digits mandatory to confirm)</span>
           </label>
-          <input type="text" id="payment-utr" placeholder="Enter 12-digit UTR from your payment app"
-            class="form-input text-xs py-2.5" maxlength="12" required>
-          <p class="text-[10px] sm:text-[11px] text-[#777777] mt-1">
-            Helps us instantly confirm your seat registration.
+          <div class="relative">
+            <input type="text" id="payment-utr" placeholder="Enter 12-digit UTR (e.g. 423456789012)"
+              class="form-input text-xs py-2.5 font-mono tracking-wider pr-14" maxlength="12" inputmode="numeric" required>
+            <span id="utr-counter" class="absolute right-3 top-2.5 text-[11px] font-mono text-neutral-400">0/12</span>
+          </div>
+          <div id="utr-error-box" class="hidden p-2.5 mt-2 bg-red-50 border border-red-200 rounded text-xs text-red-700 flex items-start space-x-2">
+            <span class="flex-shrink-0">⚠️</span>
+            <span id="utr-error-text" class="font-medium">Please enter the 12-digit UPI Reference / UTR number from your payment app.</span>
+          </div>
+          <p class="text-[10px] sm:text-[11px] text-[#777777] mt-1.5">
+            After paying in Google Pay / PhonePe / Paytm, copy the 12-digit UPI Ref ID / UTR and enter it above.
           </p>
         </div>
 
@@ -335,14 +342,67 @@
         }
       });
 
-      // Confirm Payment Click
+      // UTR Error Handling & Counter Logic
+      const utrCounter = document.getElementById('utr-counter');
+      const utrErrorBox = document.getElementById('utr-error-box');
+      const utrErrorText = document.getElementById('utr-error-text');
+
+      function showUtrError(msg) {
+        if (utrErrorText && utrErrorBox) {
+          utrErrorText.textContent = msg;
+          utrErrorBox.classList.remove('hidden');
+        }
+        utrInput.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+        utrInput.focus();
+      }
+
+      function clearUtrError() {
+        if (utrErrorBox) {
+          utrErrorBox.classList.add('hidden');
+        }
+        utrInput.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+      }
+
+      utrInput.addEventListener('input', () => {
+        // Only allow numbers up to 12 digits
+        utrInput.value = utrInput.value.replace(/\D/g, '').slice(0, 12);
+        const len = utrInput.value.length;
+        if (utrCounter) {
+          utrCounter.textContent = `${len}/12`;
+          if (len === 12) {
+            utrCounter.classList.add('text-green-600', 'font-bold');
+            utrCounter.classList.remove('text-neutral-400');
+          } else {
+            utrCounter.classList.remove('text-green-600', 'font-bold');
+            utrCounter.classList.add('text-neutral-400');
+          }
+        }
+        if (len > 0) {
+          clearUtrError();
+        }
+      });
+
+      // Confirm Payment Click (Strict: Only proceeds if 12-digit UTR is entered)
       confirmBtn.addEventListener('click', async () => {
+        clearUtrError();
+        const utrVal = utrInput.value.trim().replace(/\D/g, '');
+
+        if (!utrVal) {
+          showUtrError('Please enter your 12-digit UPI Reference / UTR Number from your payment app.');
+          return;
+        }
+
+        if (utrVal.length !== 12) {
+          showUtrError(`UTR number must be exactly 12 numeric digits (currently ${utrVal.length} digits). Please check your payment app receipt.`);
+          return;
+        }
+
+        // Disable button while processing
         confirmBtn.disabled = true;
         confirmSpinner.classList.remove('hidden');
-        confirmText.textContent = 'CONFIRMING SEAT...';
+        confirmText.textContent = 'VERIFYING & CONFIRMING...';
 
-        const utrVal = utrInput.value.trim();
-        registration.upiUtr = utrVal || 'Paid via UPI QR';
+        registration.upiUtr = utrVal;
         registration.status = 'PAID';
         registration.confirmedAt = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
@@ -366,13 +426,8 @@
         receiptMobile.textContent = registration.mobileNumber;
         receiptRegId.textContent = registration.registrationId;
         receiptDate.textContent = registration.confirmedAt;
-
-        if (utrVal) {
-          receiptUtr.textContent = utrVal;
-          receiptUtrRow.classList.remove('hidden');
-        } else {
-          receiptUtrRow.classList.add('hidden');
-        }
+        receiptUtr.textContent = utrVal;
+        receiptUtrRow.classList.remove('hidden');
 
         setTimeout(() => {
           paymentView.classList.add('hidden');
